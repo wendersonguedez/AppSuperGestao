@@ -21,3 +21,8 @@ Route::get('/', [PrincipalController::class, 'principal']);
 Route::get('/contato', [Contato::class, 'contato']);
 
 Route::get('/sobrenos', [SobreNos::class, 'sobreNos']);
+
+// Enviando parâmetros nas rotas
+Route::get('/contato/{nome}/{categoria}', function(string $nome, string $categoria) {
+    echo 'Estamos aqui: ' . $nome . ' - ' . $categoria;
+});
