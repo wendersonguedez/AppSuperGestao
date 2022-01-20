@@ -22,7 +22,15 @@ Route::get('/contato', [Contato::class, 'contato']);
 
 Route::get('/sobrenos', [SobreNos::class, 'sobreNos']);
 
+
 // Enviando parâmetros nas rotas
-Route::get('/contato/{nome}/{categoria}', function(string $nome, string $categoria) {
+Route::get('/contato/{nome}/{categoria}', function (string $nome, string $categoria) {
     echo 'Estamos aqui: ' . $nome . ' - ' . $categoria;
 });
+
+/* Tornando o parâmetro 'categoria' opcional. Caso ela não seja informado, um valor default é atribuído para ele.
+Route::get('/contato/{nome}/{categoria?}', function(string $nome, string $categoria = 'categoria não informada') {
+    echo 'Estamos aqui: ' . $nome . ' - ' . $categoria;
+});
+
+*/
