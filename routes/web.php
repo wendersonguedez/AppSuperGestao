@@ -23,14 +23,31 @@ Route::get('/contato', [Contato::class, 'contato']);
 Route::get('/sobrenos', [SobreNos::class, 'sobreNos']);
 
 
-// Enviando parâmetros nas rotas
+/* Enviando parâmetros nas rotas.
 Route::get('/contato/{nome}/{categoria}', function (string $nome, string $categoria) {
     echo 'Estamos aqui: ' . $nome . ' - ' . $categoria;
 });
 
-/* Tornando o parâmetro 'categoria' opcional. Caso ela não seja informado, um valor default é atribuído para ele.
-Route::get('/contato/{nome}/{categoria?}', function(string $nome, string $categoria = 'categoria não informada') {
-    echo 'Estamos aqui: ' . $nome . ' - ' . $categoria;
-});
+Tornando o parâmetro 'categoria' opcional. Caso ela não seja informado, um valor default é atribuído para ele.
+Route::get(
+        '/contato/{nome}/{categoria?}',
+        function (
+            string $nome,
+            string $categoria = 'categoria não informada'
+        ) {
+            echo 'Estamos aqui: ' . $nome . ' - ' . $categoria;
+        }
+    );
+
+Utilizando expressões regulares para tratamento dos parâmetros.
+Route::get(
+    '/contato/{nome}/{categoria_id}',
+    function (
+        string $nome = 'Desconhecido',
+        int $categoria_id = 1 // 1 - Informação
+    ) {
+        echo 'Estamos aqui: ' . $nome . ' - ' . $categoria_id;
+    }
+)->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
 
 */
