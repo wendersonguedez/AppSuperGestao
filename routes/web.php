@@ -22,6 +22,25 @@ Route::get('/contato', [Contato::class, 'contato']);
 
 Route::get('/sobrenos', [SobreNos::class, 'sobreNos']);
 
+Route::get('/login', function () {
+});
+
+Route::get('/login', function () {
+    return 'Login';
+});
+
+Route::get('/clientes', function () {
+    return 'Clientes';
+});
+
+Route::get('/fornecedores', function () {
+    return 'Fornecedores';
+});
+
+Route::get('/produtos', function () {
+    return 'Produtos';
+});
+
 
 /* Enviando parâmetros nas rotas.
 Route::get('/contato/{nome}/{categoria}', function (string $nome, string $categoria) {
