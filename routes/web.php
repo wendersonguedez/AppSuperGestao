@@ -36,8 +36,22 @@ Route::prefix('/app')->group(function () {
     })->name('app.produtos');
 });
 
+/*
+Realizando o redirecionamento de rotas.
+Route::get('/rota1', function () {
+    echo 'Rota 1';
+})->name('site.rota1');
 
-/* Enviando parâmetros nas rotas.
+Redirecionamento dentro da função de callback. Essa mesma forma de redirecionamento pode ser utilizada nos Controllers.
+Route::get('/rota2', function () {
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
+
+Ao acessar a Rota 2, o usuário é redirecionado para a Rota 1.
+Route::redirect('/rota2', '/rota1');
+
+
+Enviando parâmetros nas rotas.
 Route::get('/contato/{nome}/{categoria}', function (string $nome, string $categoria) {
     echo 'Estamos aqui: ' . $nome . ' - ' . $categoria;
 });
