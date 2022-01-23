@@ -3,6 +3,7 @@
 use App\Http\Controllers\Contato;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNos;
+use App\Http\Controllers\TesteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,9 @@ Route::prefix('/app')->group(function () {
 Route::fallback(function () {
     echo 'A rota acessada não existe. <a href="' . route('site.index') . '">Clique aqui</a> para voltar para a página inicial.';
 });
+
+// Enviando parâmetros da rota para a action 'teste' do parâmetro 'TesteController'.
+Route::get('/teste/{p1}/{p2}', [TesteController::class, 'teste'])->name('teste');
 
 /*
 Realizando o redirecionamento de rotas.
