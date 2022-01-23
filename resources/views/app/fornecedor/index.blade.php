@@ -1,22 +1,23 @@
 <h3>Fornecedor</h3>
 
-{{-- Exibindo texto de teste usando a sintaxe blade --}}
-{{ 'Texto de teste' }}
-<br>
-
-{{-- Tag curta para impressão no PHP. --}}
-<?= 'Texto de teste <br>' ?>
-
-
-{{-- Sintaxe blade para comentário --}}
-
 {{-- Dentro do bloco de código abaixo, o blade reconhece que se trata de PHP puro. --}}
 @php
-// Comentário de uma linha em PHP puro.
-
 /*
-    Comentário de multiplas linhas em PHP puro.
-*/
+    if () {
 
-echo 'Texto de teste';
+    } elseif () {
+
+    } else {
+
+    }
+    */
 @endphp
+
+{{-- $fornecedores vem do controller 'FornecedorController' --}}
+@if (count($fornecedores) > 0 && count($fornecedores) < 10)
+    <h3>Existem alguns fornecedores cadastrados</h3>
+@elseif (count($fornecedores) > 10)
+    <h3>Existem vários fornecedores cadastrados</h3>
+@else
+    <h3>Ainda não existem fornecedores cadastrados</h3>
+@endif
