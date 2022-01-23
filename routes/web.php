@@ -36,6 +36,11 @@ Route::prefix('/app')->group(function () {
     })->name('app.produtos');
 });
 
+// Utilizando as rotas de contingência (fallback). Caso o usuário acessa uma rota inválida, é retornada a rota de contingência.
+Route::fallback(function () {
+    echo 'A rota acessada não existe. <a href="' . route('site.index') . '">Clique aqui</a> para voltar para a página inicial.';
+});
+
 /*
 Realizando o redirecionamento de rotas.
 Route::get('/rota1', function () {
