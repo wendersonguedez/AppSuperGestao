@@ -15,8 +15,6 @@
 @endif --}}
 
 
-{{-- @unless executa se o retorno for false. --}}
-
 Fornecedor: {{ $fornecedores2[0]['nome'] }}
 <br>
 Status: {{ $fornecedores2[0]['status'] }}
@@ -29,6 +27,7 @@ Status: {{ $fornecedores2[0]['status'] }}
 
 <br>
 
-@unless($fornecedores2[0]['status'] == 'S') <!-- Se o retorna da condição for false. -->
+{{-- @unless executa se o retorno for false. --}}
+@unless($fornecedores2[0]['status'] == 'S')
     Fornecedor inativo
 @endunless
