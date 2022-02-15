@@ -29,7 +29,7 @@ Status: {{ $fornecedores[0]['status'] }}
         <br>
     @endunless --}}
 
-{{-- @isset retorna true se a variável passada como parâmetro estiver setada. --}}
+{{-- @isset retorna true se a variável passada como parâmetro estiver setada.
 @isset($fornecedores)
     Fornecedor: {{ $fornecedores[0]['nome'] }}
     <br>
@@ -43,7 +43,7 @@ Status: {{ $fornecedores[0]['status'] }}
     @endisset
 @endisset
 
-{{-- @empty retorna true se a variável passada como parâmetro estiver vazia. 
+@empty retorna true se a variável passada como parâmetro estiver vazia. 
     - ''
     - 0
     - 0.0   
@@ -51,5 +51,18 @@ Status: {{ $fornecedores[0]['status'] }}
     - null
     - false
     - array()
-    - $var 
+    - $var  
 --}}
+
+@isset($fornecedores)
+    Fornecedor: {{ $fornecedores[0]['nome'] }}
+    <br>
+    Status: {{ $fornecedores[0]['status'] }}
+    <br>
+    CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'Dado não foi preenchido' }}
+    {{--
+        $variavel testada não estiver definida (isset)
+        ou
+        $variavel testada possui o valor null
+    --}}
+@endif
