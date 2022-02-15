@@ -9,7 +9,7 @@ class FornecedorController extends Controller
     public function index() {
         $fornecedores = ['Fornecedor 1'];
 
-        // Array multidimensional
+        // Array multidimensional.
         $fornecedores2 = [
             0 => [
                 'nome' => 'Fornecedor 1',
