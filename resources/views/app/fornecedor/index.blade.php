@@ -17,27 +17,27 @@ Bloco de código @if/@else no blade.
     @endif
 
 
-{{-- Fornecedor: {{ $fornecedores2[0]['nome'] }}
+{{-- Fornecedor: {{ $fornecedores[0]['nome'] }}
 <br>
-Status: {{ $fornecedores2[0]['status'] }}
+Status: {{ $fornecedores[0]['status'] }}
 <br>
 
 
 @unless executa se o retorno for false.
-    @unless($fornecedores2[0]['status'] == 'S')
+    @unless($fornecedores[0]['status'] == 'S')
         Fornecedor inativo
         <br>
     @endunless --}}
 
 {{-- @isset retorna true se a variável passada como parâmetro estiver setada. --}}
-@isset($fornecedores2)
-    Fornecedor: {{ $fornecedores2[0]['nome'] }}
+@isset($fornecedores)
+    Fornecedor: {{ $fornecedores[0]['nome'] }}
     <br>
-    Status: {{ $fornecedores2[0]['status'] }}
+    Status: {{ $fornecedores[0]['status'] }}
     <br>
-    @isset($fornecedores2[0]['cnpj'])
-        CNPJ: {{ $fornecedores2[0]['cnpj'] }}
-        @empty($fornecedores2[0]['cnpj'])
+    @isset($fornecedores[0]['cnpj'])
+        CNPJ: {{ $fornecedores[0]['cnpj'] }}
+        @empty($fornecedores[0]['cnpj'])
             - Vazio
         @endempty
     @endisset

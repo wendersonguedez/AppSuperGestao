@@ -7,10 +7,8 @@ use Illuminate\Http\Request;
 class FornecedorController extends Controller
 {
     public function index() {
-        $fornecedores = ['Fornecedor 1'];
-
         // Array multidimensional.
-        $fornecedores2 = [
+        $fornecedores = [
             0 => [
                 'nome' => 'Fornecedor 1',
                 'status' => 'N',
@@ -22,7 +20,10 @@ class FornecedorController extends Controller
 
             ],
         ];
+        /* short if ou operador ternário */
+        $msg = isset($fornecedores[1]['cnpj']) ? 'CNPJ informado' : 'CNPJ não informado';
+        echo $msg;
 
-        return view('app.fornecedor.index', compact('fornecedores2'));
+        return view('app.fornecedor.index', compact('fornecedores'));
     }
 }
