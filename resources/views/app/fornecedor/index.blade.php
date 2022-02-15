@@ -8,13 +8,13 @@
 {{-- $fornecedores vem do controller 'FornecedorController'
 
 Bloco de código @if/@else no blade.
-@if (count($fornecedores) > 0 && count($fornecedores) < 10)
-    <h3>Existem alguns fornecedores cadastrados</h3>
-@elseif (count($fornecedores) > 10)
-    <h3>Existem vários fornecedores cadastrados</h3>
-@else
-    <h3>Ainda não existem fornecedores cadastrados</h3>
-@endif
+    @if (count($fornecedores) > 0 && count($fornecedores) < 10)
+        <h3>Existem alguns fornecedores cadastrados</h3>
+    @elseif (count($fornecedores) > 10)
+        <h3>Existem vários fornecedores cadastrados</h3>
+    @else
+        <h3>Ainda não existem fornecedores cadastrados</h3>
+    @endif
 
 
 {{-- Fornecedor: {{ $fornecedores2[0]['nome'] }}
@@ -24,10 +24,10 @@ Status: {{ $fornecedores2[0]['status'] }}
 
 
 @unless executa se o retorno for false.
-@unless($fornecedores2[0]['status'] == 'S')
-    Fornecedor inativo
-    <br>
-@endunless --}}
+    @unless($fornecedores2[0]['status'] == 'S')
+        Fornecedor inativo
+        <br>
+    @endunless --}}
 
 {{-- @isset retorna true se a variável passada como parâmetro estiver setada. --}}
 @isset($fornecedores2)
@@ -43,4 +43,13 @@ Status: {{ $fornecedores2[0]['status'] }}
     @endisset
 @endisset
 
-{{-- @empty retorna true se a variável passada como parâmetro estiver vazia. --}}
+{{-- @empty retorna true se a variável passada como parâmetro estiver vazia. 
+    - ''
+    - 0
+    - 0.0   
+    - '0'
+    - null
+    - false
+    - array()
+    - $var 
+--}}
