@@ -62,7 +62,8 @@ Status: {{ $fornecedores[0]['status'] }}
         <br>
         CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido' }}
         {{--
-            $variavel testada se não estiver definida (isset)
+            '??':
+            $variavel testada não estiver definida (isset)
             ou
             $variavel testada possui o valor null
         --}}
