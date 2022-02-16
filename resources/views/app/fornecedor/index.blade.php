@@ -16,32 +16,25 @@ Bloco de código @if/@else no blade.
         <h3>Ainda não existem fornecedores cadastrados</h3>
     @endif
 
-
-{{-- Fornecedor: {{ $fornecedores[0]['nome'] }}
-<br>
-Status: {{ $fornecedores[0]['status'] }}
-<br>
-
-
 @unless executa se o retorno for false.
     @unless($fornecedores[0]['status'] == 'S')
         Fornecedor inativo
         <br>
-    @endunless --}}
-
-{{-- @isset retorna true se a variável passada como parâmetro estiver setada.
-@isset($fornecedores)
-    Fornecedor: {{ $fornecedores[0]['nome'] }}
-    <br>
-    Status: {{ $fornecedores[0]['status'] }}
-    <br>
-    @isset($fornecedores[0]['cnpj'])
-        CNPJ: {{ $fornecedores[0]['cnpj'] }}
-        @empty($fornecedores[0]['cnpj'])
-            - Vazio
-        @endempty
+    @endunless
+    
+@isset retorna true se a variável passada como parâmetro estiver setada.
+    @isset($fornecedores)
+        Fornecedor: {{ $fornecedores[0]['nome'] }}
+        <br>
+        Status: {{ $fornecedores[0]['status'] }}
+        <br>
+        @isset($fornecedores[0]['cnpj'])
+            CNPJ: {{ $fornecedores[0]['cnpj'] }}
+            @empty($fornecedores[0]['cnpj'])
+                - Vazio
+            @endempty
+        @endisset
     @endisset
-@endisset
 
 @empty retorna true se a variável passada como parâmetro estiver vazia. 
     - ''
@@ -52,6 +45,21 @@ Status: {{ $fornecedores[0]['status'] }}
     - false
     - array()
     - $var  
+
+Bloco de código switch no blade.
+    @switch($fornecedores[2]['ddd'])
+        @case ('11')
+            São Paulo - SP
+            @break
+        @case ('32')
+            Juiz de Fora - Minas Gerais
+            @break
+        @case ('85')
+            Fortaleza - CE
+            @break
+        @default
+            Estado não identificado
+    @endswitch
 --}}
 
 @isset($fornecedores)
@@ -69,19 +77,6 @@ Status: {{ $fornecedores[0]['status'] }}
         --}}
         <br>
         Telefone: ({{ $fornecedores[$i]['ddd'] ?? ''}}) {{ $fornecedores[$i]['telefone'] ?? '' }}
-        {{-- @switch($fornecedores[2]['ddd'])
-            @case ('11')
-                São Paulo - SP
-                @break
-            @case ('32')
-                Juiz de Fora - Minas Gerais
-                @break
-            @case ('85')
-                Fortaleza - CE
-                @break
-            @default
-                Estado não identificado
-        @endswitch --}}
         <hr>
         @endfor
 @endisset
