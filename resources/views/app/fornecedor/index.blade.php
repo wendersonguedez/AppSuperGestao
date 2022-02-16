@@ -55,29 +55,32 @@ Status: {{ $fornecedores[0]['status'] }}
 --}}
 
 @isset($fornecedores)
-    Fornecedor: {{ $fornecedores[2]['nome'] }}
-    <br>
-    Status: {{ $fornecedores[2]['status'] }}
-    <br>
-    CNPJ: {{ $fornecedores[2]['cnpj'] ?? 'Dado não foi preenchido' }}
-    {{--
-        $variavel testada não estiver definida (isset)
-        ou
-        $variavel testada possui o valor null
-    --}}
-    <br>
-    Telefone: ({{ $fornecedores[2]['ddd'] ?? ''}}) {{ $fornecedores[2]['telefone'] ?? '' }}
-    @switch($fornecedores[2]['ddd'])
-        @case ('11')
-            São Paulo - SP
-            @break
-        @case ('32')
-            Juiz de Fora - Minas Gerais
-            @break
-        @case ('85')
-            Fortaleza - CE
-            @break
-        @default
-            Estado não identificado
-    @endswitch
-@endif
+    @for($i = 0; isset($fornecedores[$i]); $i++)
+        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+        <br>
+        Status: {{ $fornecedores[$i]['status'] }}
+        <br>
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido' }}
+        {{--
+            $variavel testada se não estiver definida (isset)
+            ou
+            $variavel testada possui o valor null
+        --}}
+        <br>
+        Telefone: ({{ $fornecedores[$i]['ddd'] ?? ''}}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+        {{-- @switch($fornecedores[2]['ddd'])
+            @case ('11')
+                São Paulo - SP
+                @break
+            @case ('32')
+                Juiz de Fora - Minas Gerais
+                @break
+            @case ('85')
+                Fortaleza - CE
+                @break
+            @default
+                Estado não identificado
+        @endswitch --}}
+        <hr>
+        @endfor
+@endisset
