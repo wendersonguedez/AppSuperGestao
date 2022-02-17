@@ -80,16 +80,39 @@ Bloco de código for no blade.
             <hr>
         @endfor
     @endisset
+
+Bloco de código while no blade.
+    @isset($fornecedores)
+        @php $i = 0 @endphp
+        @while(isset($fornecedores[$i]))
+            Fornecedor: {{ $fornecedores[$i]['nome'] }}
+            <br>
+            Status: {{ $fornecedores[$i]['status'] }}
+            <br>
+            CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido' }}
+            
+                '??', só executa caso:
+                $variavel testada não estiver definida (isset)
+                ou
+                $variavel testada possui o valor null
+            
+            <br>
+            Telefone: ({{ $fornecedores[$i]['ddd'] ?? ''}}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+            <hr>
+            @php $i++ @endphp
+        @endwhile
+    @endisset
+
+Bloco de código foreach no blade.
 --}}
 
 @isset($fornecedores)
-    @php $i = 0 @endphp
-    @while(isset($fornecedores[$i]))
-        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+    @foreach($fornecedores as $fornecedor)
+        Fornecedor: {{ $fornecedor['nome'] }}
         <br>
-        Status: {{ $fornecedores[$i]['status'] }}
+        Status: {{ $fornecedor['status'] }}
         <br>
-        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido' }}
+        CNPJ: {{ $fornecedor['cnpj'] ?? 'Dado não foi preenchido' }}
         {{--
             '??', só executa caso:
             $variavel testada não estiver definida (isset)
@@ -97,8 +120,7 @@ Bloco de código for no blade.
             $variavel testada possui o valor null
         --}}
         <br>
-        Telefone: ({{ $fornecedores[$i]['ddd'] ?? ''}}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+        Telefone: ({{ $fornecedor['ddd'] ?? ''}}) {{ $fornecedor['telefone'] ?? '' }}
         <hr>
-        @php $i++ @endphp
-    @endwhile
+    @endforeach
 @endisset
