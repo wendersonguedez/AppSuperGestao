@@ -60,10 +60,31 @@ Bloco de código switch no blade.
         @default
             Estado não identificado
     @endswitch
+
+Bloco de código for no blade.
+    @isset($fornecedores)
+        @for($i = 0; isset($fornecedores[$i]); $i++)
+            Fornecedor: {{ $fornecedores[$i]['nome'] }}
+            <br>
+            Status: {{ $fornecedores[$i]['status'] }}
+            <br>
+            CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido' }}
+        
+                '??', só executa caso:
+                $variavel testada não estiver definida (isset)
+                ou
+                $variavel testada possui o valor null
+            
+            <br>
+            Telefone: ({{ $fornecedores[$i]['ddd'] ?? ''}}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+            <hr>
+        @endfor
+    @endisset
 --}}
 
 @isset($fornecedores)
-    @for($i = 0; isset($fornecedores[$i]); $i++)
+    @php $i = 0 @endphp
+    @while(isset($fornecedores[$i]))
         Fornecedor: {{ $fornecedores[$i]['nome'] }}
         <br>
         Status: {{ $fornecedores[$i]['status'] }}
@@ -78,5 +99,6 @@ Bloco de código switch no blade.
         <br>
         Telefone: ({{ $fornecedores[$i]['ddd'] ?? ''}}) {{ $fornecedores[$i]['telefone'] ?? '' }}
         <hr>
-        @endfor
+        @php $i++ @endphp
+    @endwhile
 @endisset
