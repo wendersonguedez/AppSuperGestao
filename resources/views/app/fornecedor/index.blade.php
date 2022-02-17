@@ -104,6 +104,22 @@ Bloco de código while no blade.
     @endisset
 
 Bloco de código foreach no blade.
+    @isset($fornecedores)
+        @foreach($fornecedores as $fornecedor)
+            Fornecedor: {{ $fornecedor['nome'] }}
+            <br>
+            Status: {{ $fornecedor['status'] }}
+            <br>
+            CNPJ: {{ $fornecedor['cnpj'] ?? 'Dado não foi preenchido' }}
+                '??', só executa caso:
+                $variavel testada não estiver definida (isset)
+                ou
+                $variavel testada possui o valor null
+            <br>
+            Telefone: ({{ $fornecedor['ddd'] ?? ''}}) {{ $fornecedor['telefone'] ?? '' }}
+            <hr>
+        @endforeach
+    @endisset
 --}}
 
 @isset($fornecedores)
