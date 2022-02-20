@@ -14,7 +14,11 @@
 
         <div class="informacao-pagina">
             <div class="contato-principal">
-                @component('site.layouts._components.formContato')
+                {{-- O parâmetro do component está definindo uma classe CSS para o formulaŕio deste view. --}}
+                @component('site.layouts._components.formContato', ['classe' => 'borda-preta'])
+                    {{-- Enviando parâmetro para o componente dentro dele. --}}
+                    <p>A nossa equipe lhe retornará em breve</p>
+                    <p>Nosso tempo médio de resposta é de 48h.</p>
                 @endcomponent
             </div>
         </div>
