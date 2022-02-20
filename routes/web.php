@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 /* Rotas para as páginas de navegação do usuário */
 Route::get('/', [PrincipalController::class, 'principal'])->name('site.principal');
 Route::get('/contato', [Contato::class, 'contato'])->name('site.contato');
+Route::post('/contato', [Contato::class, 'contato'])->name('site.contato');
 Route::get('/sobrenos', [SobreNos::class, 'sobreNos'])->name('site.sobrenos');
 
 // Realizando o agrupamento das rotas, permitindo o acesso à elas somente após a autenticação do usuário. 'prefix' indica o prefixo que é necessário para acessá-las
