@@ -8,6 +8,8 @@
 </head>
 
 <body>
+    {{-- Incluindo o topo da paǵina nas views --}}
+    @include('site.layouts._partials.topo')
     {{-- Os blocos HTML que estão vindo da view, serão renderizados aqui. --}}
     @yield('content')
 </body>
