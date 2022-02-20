@@ -7,30 +7,19 @@ use App\Http\Controllers\SobreNos;
 use App\Http\Controllers\TesteController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 /* Rotas para as páginas de navegação do usuário */
-Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
+Route::get('/', [PrincipalController::class, 'principal'])->name('site.principal');
 Route::get('/contato', [Contato::class, 'contato'])->name('site.contato');
 Route::get('/sobrenos', [SobreNos::class, 'sobreNos'])->name('site.sobrenos');
 
 // Realizando o agrupamento das rotas, permitindo o acesso à elas somente após a autenticação do usuário. 'prefix' indica o prefixo que é necessário para acessá-las
 Route::prefix('/app')->group(function () {
-    
     Route::get('/clientes', function () {
         return 'Clientes';
-        })->name('app.clientes');
+    })->name('app.clientes');
 
     Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
-    
+
     Route::get('/produtos', function () {
         return 'Produtos';
     })->name('app.produtos');
@@ -38,7 +27,7 @@ Route::prefix('/app')->group(function () {
 
 // Utilizando as rotas de contingência (fallback). Caso o usuário acessa uma rota inválida, é retornada a rota de contingência.
 Route::fallback(function () {
-    echo 'A rota acessada não existe. <a href="' . route('site.index') . '">Clique aqui</a> para voltar para a página inicial.';
+    echo 'A rota acessada não existe. <a href="' . route('site.principal') . '">Clique aqui</a> para voltar para a página inicial.';
 });
 
 /* Enviando parâmetros da rota para a action 'teste' do parâmetro 'TesteController'.
