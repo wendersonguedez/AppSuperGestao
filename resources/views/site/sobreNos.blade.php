@@ -1,5 +1,10 @@
+{{-- Implementando o template basic dentro da view. --}}
 @extends('site.layouts.basic')
 
+{{-- Titulo da página --}}
+@section('title', 'Sobre nós')
+
+{{-- Envio dos blocos de código HTML para o template extendido.  --}}
 @section('content')
     <div class="topo">
 
