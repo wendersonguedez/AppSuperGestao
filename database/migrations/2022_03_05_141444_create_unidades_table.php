@@ -40,12 +40,12 @@ class CreateUnidadesTable extends Migration
      */
     public function down()
     {
-        
+
         /* removendo o relacionamento da tabela produtos */
         Schema::table('produtos', function (Blueprint $table) {
             /* removendo a FK */
             $table->dropForeign('produtos_unidade_id_foreign'); // [table]_[column]_foreign ===> Padrão de remoção de uma FK no Laravel.
-        
+
             /* removendo a coluna unidade_id */
             $table->dropColumn('unidade_id');
         });
